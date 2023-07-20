@@ -56,6 +56,7 @@ export class ListComponent implements OnInit, OnDestroy{
   }
 
   public updateSelectedCurrencies(): void {
+    this.pageNumber = 1;
     this.selectedCurrencies = this.currencies
       .filter(option => option.value)
       .map(option => option.name);
