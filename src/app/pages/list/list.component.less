@@ -1,0 +1,158 @@
+@import "../../../styles";
+
+.title {
+  font-size: 28px;
+  line-height: 32px;
+  margin-left: 63px;
+  margin-top: 52px;
+  margin-bottom: 64px;
+  font-weight: 500;
+}
+
+.page-container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-section {
+  width: 80vw;
+  background-color: @color-primary;
+}
+
+.right-section {
+  width: 20vw;
+  background-color: @color-secondary;
+  border-left: 1px solid #A5A5A5;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  margin-left: 64px;
+}
+
+.pagination {
+  margin-top: 52px;
+  margin-left: 64px;
+}
+
+span {
+  margin: 0 18px;
+}
+
+.title-right {
+  margin-top: 52px;
+  margin-left: 33px;
+  font-size: 24px;
+  color: #000000DE;
+}
+
+.input {
+  width: 329px;
+  height: 48px;
+  margin: 35px 32px;
+  margin-bottom: 0;
+  border: none;
+  border-bottom: 1px solid #0000004D;
+  font-size: 16px;
+  padding-bottom: 0;
+}
+
+.input-focus {
+  border: none;
+  border-bottom: 1px solid #347CFF;
+  outline: none;
+}
+
+.radio-container {
+  margin-top: 24px;
+  margin-left: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-title {
+  font-weight: 700;
+  margin-bottom: 21px;
+}
+
+.form-radio {
+  margin-bottom: 12px;
+}
+
+.form-radio input[type=radio] {
+  display: none;
+}
+
+.form-radio label {
+  cursor: pointer;
+  position: relative;
+  padding-left: 48px;
+  margin-right: 0;
+  line-height: 19px;
+  user-select: none;
+}
+
+.form-radio label:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  background: url(../../../assets/images/button-off.svg) 0 0 no-repeat;
+}
+
+.form-radio input[type=radio]:checked + label:before {
+  background: url(../../../assets/images/button-on.svg) 0 0 no-repeat;
+}
+
+.menu {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  width: 305px;
+  margin-left: 32px;
+  padding: 14px;
+}
+
+.checkbox-other {
+  display: block;
+  margin: 0 0 10px 0;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.checkbox-other input[type=checkbox] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+.checkbox-other span {
+  display: inline-block;
+  position: relative;
+  padding: 0 0 0 35px;
+  line-height: 22px;
+}
+.checkbox-other span:before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: background 0.3s ease;
+  background: url(../../../assets/images/checkbox-off.svg) 0 0 no-repeat;
+}
+
+.checkbox-other input[type=checkbox]:checked + span:before {
+  background: url(../../../assets/images/checkbox-checked.svg) 0 0 no-repeat;
+}
+
+.focused span:before {
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+

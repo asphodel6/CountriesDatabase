@@ -1,0 +1,16 @@
+<div class="component-container">
+  <div class="header">
+    <div class="title">{{ name }}</div>
+    <img src="assets/images/forward.svg" width="24px" height="24px" alt="forward" (click)="moreAboutCountry(code)">
+  </div>
+  <div class="content">
+    <div class="left-section">
+      <div class="row">Continent</div>
+      <div class="row blue">{{ continentName }}</div>
+    </div>
+    <div class="right-section">
+      <div class="row">Currency</div>
+      <div class="row blue">{{ currency }}</div>
+    </div>
+  </div>
+</div>

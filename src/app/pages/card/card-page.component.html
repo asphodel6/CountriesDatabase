@@ -1,0 +1,38 @@
+<div *ngIf="country$ | async as country">
+  <div class="component-container">
+    <div class="header" (click)="return()">
+      <img src="assets/images/forward.svg" width="24px" height="24px" alt="forward">
+      <div>Вернуться</div>
+    </div>
+    <div class="title">{{ country.name }}</div>
+    <div class="content">
+      <div class="left-section">
+        <div class="row">
+          <div class="row">Continent</div>
+          <div class="row blue">{{country.continent.name}}</div>
+        </div>
+        <div class="row">
+          <div class="row">Capital</div>
+          <div class="row blue">{{country.capital}}</div>
+        </div>
+      </div>
+      <div class="right-section">
+        <div class="row">
+          <div class="row">Currencies</div>
+          <div class="row blue">{{country.currencies}}</div>
+        </div>
+        <div class="row">
+          <div class="row">Region</div>
+          <div class="row blue">{{country.awsRegion}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="languages">
+    <div>Языки</div>
+    <div *ngFor="let language of country.languages; let last = last" class="language">
+      <span> {{language.name}}</span>
+      <span *ngIf="!last">, &nbsp;</span>
+    </div>
+  </div>
+</div>

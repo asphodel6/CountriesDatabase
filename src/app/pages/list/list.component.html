@@ -1,0 +1,68 @@
+<div class="page-container">
+  <div class="left-section">
+    <div class="title">Countries</div>
+    <div
+      *ngFor="let country of countries | search: searchText | selectedFilter: selectedOption | checkboxFilter: selectedCurrencies | slice: 5 * (pageNumber - 1) : (pageNumber) * 5 "
+      class="content">
+      <app-country-card currency="{{country.currency}}" name="{{country.name}}"
+                        continentName="{{country.continent.name}}" code="{{country.code}}"></app-country-card>
+    </div>
+    <div class="pagination">
+      <img src="assets/images/arrow-back.svg" (click)="decrementPageNumber()" width="8px" height="12px" alt="back">
+      <span>{{ pageNumber }}</span>
+      <img src="assets/images/arrow-forward.svg" (click)="incrementPageNumber()" width="8px" height="12px"
+           alt="forward">
+    </div>
+  </div>
+  <div class="right-section">
+    <div class="title-right">Фильтры</div>
+    <input [(ngModel)]="searchText" (ngModelChange)="inputChange()" class="input" type="text" placeholder="Name">
+    <input class="input" type="text" (click)="showMenu = !showMenu" readonly [value]="'Выбрано ' + checkboxCheckedCount" [ngClass]="{'input-focus' : inputFocus}">
+    <div *ngIf="showMenu" class="menu">
+      <label class="checkbox-other" *ngFor="let currency of currencies">
+        <input type="checkbox" [(ngModel)]="currency.value" (change)="updateSelectedCurrencies()">
+        <span>{{currency.name}}</span>
+      </label>
+    </div>
+    <div class="radio-container">
+      <div class="radio-title">Continent</div>
+      <div class="form-radio">
+        <input id="radio-1" type="radio" [(ngModel)]="selectedOption" (ngModelChange)="inputChange()" value="Nothing">
+        <label for="radio-1">Nothing</label>
+      </div>
+      <div class="form-radio">
+        <input id="radio-2" type="radio" [(ngModel)]="selectedOption" (ngModelChange)="inputChange()" value="Asia">
+        <label for="radio-2">Asia</label>
+      </div>
+      <div class="form-radio">
+        <input id="radio-3" type="radio" [(ngModel)]="selectedOption" (ngModelChange)="inputChange()" value="Africa">
+        <label for="radio-3">Africa</label>
+      </div>
+      <div class="form-radio">
+        <input id="radio-4" type="radio" [(ngModel)]="selectedOption" (ngModelChange)="inputChange()"
+               value="Antarctica">
+        <label for="radio-4">Antarctica</label>
+      </div>
+      <div class="form-radio">
+        <input id="radio-5" type="radio" [(ngModel)]="selectedOption" (ngModelChange)="inputChange()" value="Europe">
+        <label for="radio-5">Europe</label>
+      </div>
+      <div class="form-radio">
+        <input id="radio-6" type="radio" [(ngModel)]="selectedOption" (ngModelChange)="inputChange()" value="Oceania">
+        <label for="radio-6">Oceania</label>
+      </div>
+      <div class="form-radio">
+        <input id="radio-7" type="radio" [(ngModel)]="selectedOption" (ngModelChange)="inputChange()"
+               value="North America">
+        <label for="radio-7">North America</label>
+      </div>
+      <div class="form-radio">
+        <input id="radio-8" type="radio" [(ngModel)]="selectedOption" (ngModelChange)="inputChange()"
+               value="South America">
+        <label for="radio-8">South America</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+
