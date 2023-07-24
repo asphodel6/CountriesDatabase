@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { countryData, countryDataProvider } from '../../providers/country-data.provider';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountriesService } from '../../services/countries.service';
@@ -15,7 +15,8 @@ import { ICardPage } from '../../interfaces/card.page.interface';
       useFactory: countryDataProvider,
       deps: [ActivatedRoute, CountriesService]
     }
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardPageComponent implements OnInit {
 

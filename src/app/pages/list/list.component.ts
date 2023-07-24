@@ -1,4 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DoCheck,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { IListPage } from '../../interfaces/list.page.interface';
 import { CountriesService } from '../../services/countries.service';
@@ -16,8 +23,9 @@ import { ICheckboxValue } from '../../interfaces/checkbox.value.interface';
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListComponent implements OnInit, OnDestroy{
+export class ListComponent implements OnInit, OnDestroy, DoCheck{
   public countries: IListPage[] = [];
   public pageNumber: number = pageNumber;
   public showMenu: boolean = false;
@@ -27,7 +35,7 @@ export class ListComponent implements OnInit, OnDestroy{
   public selectedCurrencies: string[] = [];
   public checkboxCheckedCount!: number;
   public inputFocus: boolean = false;
-  constructor(private _apollo: Apollo, private _countriesService: CountriesService, private _valuesService: ValuesService) {
+  constructor(private _apollo: Apollo, private _countriesService: CountriesService, private _valuesService: ValuesService, private _cdr: ChangeDetectorRef) {
 
   }
 
@@ -62,6 +70,12 @@ export class ListComponent implements OnInit, OnDestroy{
       .map(option => option.name);
     this.checkboxCheckedCount = this.selectedCurrencies.length;
     this.inputFocus = this.selectedCurrencies.length !== 0;
+  }
+
+  public ngDoCheck(): void {
+    if (this.countries.length !== 0) {
+      this._cdr.detectChanges();
+    }
   }
 
   public ngOnDestroy():void {
