@@ -40,7 +40,7 @@ export class ListComponent implements OnInit, OnDestroy, DoCheck{
   }
 
   public ngOnInit(): void {
-    this._countriesService.getCountries().subscribe((result: any) => {
+    this._countriesService.getCountries().subscribe((result) => {
       this.countries = result.data.countries;
     });
     this.updateSelectedCurrencies();

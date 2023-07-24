@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, inject, OnInit } from '@angular/core';
 import { countryData, countryDataProvider } from '../../providers/country-data.provider';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountriesService } from '../../services/countries.service';
@@ -18,12 +18,12 @@ import { ICardPage } from '../../interfaces/card.page.interface';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardPageComponent implements OnInit {
+export class CardPageComponent implements OnInit, DoCheck {
 
   public countryData$: Observable<any> = inject(countryData);
   public country$!: Observable<ICardPage>;
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private _cdr: ChangeDetectorRef) {
 
   }
 
@@ -31,6 +31,10 @@ export class CardPageComponent implements OnInit {
     this.countryData$.pipe(
       take(1)
     ).subscribe((country) => this.country$ = of(country.data.country));
+  }
+
+  public ngDoCheck(): void {
+    this._cdr.detectChanges();
   }
 
   public return(): void {

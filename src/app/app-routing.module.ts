@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'list', component: ListComponent },
   { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: 'card/:key', component: CardPageComponent },
+  { path: '**', component: ListComponent }
 ];
 
 @NgModule({
